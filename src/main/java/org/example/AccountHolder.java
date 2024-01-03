@@ -1,23 +1,17 @@
 package org.example;
 
-public class AccountHolder implements Runnable {
+public class AccountHolder{
     public Account account;
 
     public AccountHolder(Account account) {
         this.account = account;
     }
 
-    @Override
-    public void run() {
-        // both of the two thread want to withdraw 6000
-        makeWithdraw(6000);
-    }
-
-    public synchronized void makeWithdraw(int amount) {
+    public  void makeWithdraw(int amount) {
         if (account.getAccount() >= amount) {
             System.out.println(Thread.currentThread().getName() + "is going to withdraw " + amount);
             try {
-                Thread.sleep(3000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
